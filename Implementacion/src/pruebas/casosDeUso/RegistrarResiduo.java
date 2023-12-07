@@ -1,24 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
-package pruebas;
+package pruebas.casosDeUso;
 
 import objetosNegocio.*;
 
 import java.util.Date;
 
-/**
- * @author fabricio01352, sergio216581
- */
-public class NewMain {
-
-    /**
-     * @param args the command line arguments
-     */
+public class RegistrarResiduo {
     public static void main(String[] args) {
-
-        // 1. Una empresa productora genera un residuo
         String[] compuestos = {"Amoniaco", "Fentanilo", "Criptonita"};
         Residuo residuo = new Residuo(15, compuestos);
         EmpresaProductora ep = new EmpresaProductora("Producta Ciudad Obregon", 1, residuo);
