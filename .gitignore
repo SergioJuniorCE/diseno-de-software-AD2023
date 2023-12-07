@@ -1,1 +1,7 @@
 **/.DS_Store
+/Implementacion/build/**
+/out
+Implementacion/nbproject/**
+Implementacion/nbproject/project.properties
+Implementacion/nbproject/private/private.xml
+Implementacion/nbproject/private/private.properties

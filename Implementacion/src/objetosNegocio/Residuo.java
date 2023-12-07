@@ -8,7 +8,6 @@ import java.util.Arrays;
 
 
 /**
- *
  * @author fabricio01352
  */
 public class Residuo {
@@ -21,26 +20,21 @@ public class Residuo {
         this.compuestos = compuestos;
     }
 
-    
-    
-    
-    
+
     public Residuo(int idResiduo, String[] compuestos, Translado[] translados) {
         this.idResiduo = idResiduo;
         this.compuestos = compuestos;
-        this.translados=translados;
+        this.translados = translados;
     }
 
     public String[] getCompuestos() {
         return compuestos;
     }
 
-    
-  
+
     public int getIdResiduo() {
         return idResiduo;
     }
-
 
 
     public void setIdResiduo(int idResiduo) {
@@ -59,33 +53,18 @@ public class Residuo {
         this.translados = translados;
     }
 
-    
+
     public void mostrar() {
         System.out.println("--------------------\n");
-        System.out.println("""
-                           Informaci\u00f3n del residuo: 
-                           idResiduo = """ + idResiduo + "\ncompuestos = " + Arrays.toString(compuestos) );
+        System.out.println("Informaci\u00f3n del residuo:");
+        System.out.println("idResiduo = " + idResiduo);
+        System.out.println("compuestos = " + Arrays.toString(compuestos));
         for (Translado translado : translados) {
             System.out.println(translado);
-        }   
-         System.out.println("--------------------\n");
+        }
+        System.out.println("--------------------\n");
 
     }
-    
-    
 
- 
-    
-    
 
-    
-
-  
-    
-    
-    
-    
-    
-    
-    
 }
