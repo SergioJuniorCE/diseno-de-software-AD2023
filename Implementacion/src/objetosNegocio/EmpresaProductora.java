@@ -6,6 +6,7 @@ package objetosNegocio;
 
 
 /**
+ * Clase que representa una empresa productora
  * @author fabricio01352
  */
 public class EmpresaProductora {
@@ -16,9 +17,9 @@ public class EmpresaProductora {
     /**
      * Constructor de la clase EmpresaProductora
      *
-     * @param nomEmpresa
-     * @param idEmpresa
-     * @param residuo
+     * @param nomEmpresa Nombre de la empresa productora
+     * @param idEmpresa Id de la empresa productora
+     * @param residuo Residuo de la empresa productora
      */
     public EmpresaProductora(String nomEmpresa, int idEmpresa, Residuo residuo) {
         this.residuo = residuo;
@@ -29,7 +30,7 @@ public class EmpresaProductora {
     /**
      * Obtiene el residuo de la empresa productora
      *
-     * @return residuo
+     * @return Residuo de la empresa productora
      */
     public Residuo getResiduo() {
         return residuo;
