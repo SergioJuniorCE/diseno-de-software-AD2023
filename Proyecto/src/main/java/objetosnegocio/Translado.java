@@ -1,25 +1,52 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+/**
+ * Translado.java
+ * 
+ * 
  */
 package objetosNegocio;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
 
 /**
- * Clase que representa un translado de residuos
+ * Clase que rempresaProductoraresenta un translado de residuos
  *
  * @author fabricio01352
  */
-public class Translado {
+@Entity
+public class Translado implements Serializable {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int idTranslado;
+     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fechaEnviado;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date fechaRecibido;
+    
     private String origen;
     private String destino;
-    private EmpresaTransporte et;
+    
+    
+    @OneToMany(mappedBy = "translado")
+    private ArrayList<EmpresaTransporte> empresasTransporte;
+    
+    @OneToOne
     private Residuo residuo;
-    private EmpresaProductora ep;
+    
+    @OneToOne
+    private EmpresaProductora empresaProductora;
+
+    public Translado() {
+    }
 
     /**
      * Constructor de la clase Translado
@@ -30,18 +57,20 @@ public class Translado {
      * @param origen        Origen del translado
      * @param destino       Destino del translado
      * @param residuo       Residuo del translado
-     * @param et            Empresa de transporte del translado
-     * @param ep            Empresa productora del translado
+     * @param empresasTransporte
+     * @param empresaProductora  Empresa productora del translado
      */
-    public Translado(int idTranslado, Date fechaEnviado, Date fechaRecibido, String origen, String destino, Residuo residuo, EmpresaTransporte et, EmpresaProductora ep) {
+    
+    
+    public Translado(int idTranslado, Date fechaEnviado, Date fechaRecibido, String origen, String destino, Residuo residuo,  ArrayList<EmpresaTransporte> empresasTransporte, EmpresaProductora empresaProductora) {
         this.idTranslado = idTranslado;
         this.fechaEnviado = fechaEnviado;
         this.fechaRecibido = fechaRecibido;
         this.origen = origen;
         this.destino = destino;
-        this.et = et;
+        this.empresasTransporte = empresasTransporte;
         this.residuo = residuo;
-        this.ep = ep;
+        this.empresaProductora = empresaProductora;
     }
 
     /**
@@ -137,19 +166,19 @@ public class Translado {
     /**
      * Obtiene la empresa de transporte del translado
      *
-     * @return Empresa de transporte del translado
+     * @return regresa las empresas que realizaron este transporte
      */
-    public EmpresaTransporte getEt() {
-        return et;
+    public ArrayList<EmpresaTransporte> getEmpresasTransporte() {    
+        return empresasTransporte;
     }
 
     /**
      * Establece la empresa de transporte del translado
      *
-     * @param et Empresa de transporte del translado
+     * @param empresasTransporte empresas que transportaron este material
      */
-    public void setEt(EmpresaTransporte et) {
-        this.et = et;
+    public void setEmpresasTransporte(ArrayList<EmpresaTransporte> empresasTransporte) {   
+        this.empresasTransporte = empresasTransporte;
     }
 
     /**
@@ -176,25 +205,31 @@ public class Translado {
      * @return Empresa productora del translado
      */
     public EmpresaProductora getEp() {
-        return ep;
+        return empresaProductora;
     }
 
     /**
      * Establece la empresa productora del translado
      *
-     * @param ep Empresa productora del translado
+     * @param empresaProductora Empresa productora del translado
      */
-    public void setEp(EmpresaProductora ep) {
-        this.ep = ep;
+    public void setEp(EmpresaProductora empresaProductora) {
+        this.empresaProductora = empresaProductora;
     }
 
-    /**
-     * Obtiene el ID de la empresa productora del translado
-     *
-     * @return ID de la empresa productora del translado
-     */
+    public EmpresaProductora getEmpresaProductora() {
+        return empresaProductora;
+    }
+
+    public void setEmpresaProductora(EmpresaProductora empresaProductora) {
+        this.empresaProductora = empresaProductora;
+    }
+
     @Override
     public String toString() {
-        return "idTranslado = " + idTranslado + "\nfechaEnviado=" + fechaEnviado + "\nfechaRecibido = " + fechaRecibido + "\norigen = " + origen + "\ndestino = " + destino + "\nEmpresa transporte = " + et + "\nId Residuo = " + residuo.getIdResiduo() + "\nId Empresa Productora = " + ep.getIdEmpresa();
+        return "Translado{" + "idTranslado=" + idTranslado + ", fechaEnviado=" + fechaEnviado + ", fechaRecibido=" + fechaRecibido + ", origen=" + origen + ", destino=" + destino + ", empresasTransporte=" + empresasTransporte + ", residuo=" + residuo + ", empresaProductora=" + empresaProductora + '}';
     }
+
+  
+ 
 }

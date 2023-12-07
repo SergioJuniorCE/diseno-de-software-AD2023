@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence   http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="disenoP" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <!-- Clases de entidad -->
+    <class>objetosNegocio.EmpresaTransporte</class>
+    <class>objetosNegocio.Residuo</class>
+    <class>objetosNegocio.Translado</class>
+    <class>objetosNegocio.Vehiculo</class>
+    <class>objetosNegocio.EmpresaProductora</class>
+    <properties>
+      <!-- Configuración de la base de datos H2 -->
+      <property name="javax.persistence.jdbc.url" value="jdbc:h2:./diseno"/>
+      <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
+      <property name="javax.persistence.jdbc.password" value=""/>
+      <!-- Configuración de EclipseLink -->
+      <property name="eclipselink.ddl-generation" value="create-tables"/>
+      <property name="eclipselink.weaving" value="false"/>
+      <property name="javax.persistence.schema-generation.database.action" value="create-tables"/>
+    </properties>
+  </persistence-unit>
+</persistence>

@@ -1,18 +1,36 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+/**
+ * EmpresaProductora.java
+ * 
+ * 
  */
 package objetosNegocio;
 
+import java.io.Serializable;
+import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  * Clase que representa una empresa productora
- * @author fabricio01352
+ *
+ * @author Equipo 5
  */
-public class EmpresaProductora {
-    private String nomEmpresa;
+@Entity
+public class EmpresaProductora implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int idEmpresa;
-    private Residuo residuo;
+    private String nomEmpresa;
+
+    @OneToMany(mappedBy = "empresaProductora")
+    private List<Residuo> residuos;
+
+    public EmpresaProductora() {
+    }
 
     /**
      * Constructor de la clase EmpresaProductora
@@ -21,29 +39,29 @@ public class EmpresaProductora {
      * @param idEmpresa Id de la empresa productora
      * @param residuo Residuo de la empresa productora
      */
-    public EmpresaProductora(String nomEmpresa, int idEmpresa, Residuo residuo) {
-        this.residuo = residuo;
+    public EmpresaProductora(String nomEmpresa, int idEmpresa, List<Residuo> residuo) {
+        this.residuos = residuo;
         this.nomEmpresa = nomEmpresa;
         this.idEmpresa = idEmpresa;
     }
-
     /**
-     * Obtiene el residuo de la empresa productora
+     * Obtiene los residuo de la empresa productora
      *
      * @return Residuo de la empresa productora
      */
-    public Residuo getResiduo() {
-        return residuo;
+    public List<Residuo> getResiduos() {
+        return residuos;
     }
 
+
     /**
-     * Establece el residuo de la empresa productora
-     *
-     * @param residuo Residuo a establecer
+     * Establece los residuos que la empresa maneja
+     * @param residuos  residuos de la empresa
      */
-    public void setResiduo(Residuo residuo) {
-        this.residuo = residuo;
+    public void setResiduos(List<Residuo> residuos) {
+        this.residuos = residuos;
     }
+
 
     /**
      * Obtiene el nombre de la empresa productora
@@ -81,11 +99,14 @@ public class EmpresaProductora {
         this.idEmpresa = idEmpresa;
     }
 
+    
+    
     /**
      * Muestra la informacion de la empresa productora
      */
     @Override
     public String toString() {
-        return "EmpresaProductora{" + "nomEmpresa=" + nomEmpresa + ", idEmpresa=" + idEmpresa + ", Id residuo=" + residuo.getIdResiduo() + '}';
+        return "EmpresaProductora{" + "idEmpresa=" + idEmpresa + ", nomEmpresa=" + nomEmpresa + ", residuos=" + residuos + '}';
     }
+
 }
